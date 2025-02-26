@@ -25,3 +25,13 @@ def test_is_palindrome():
     assert not is_palindrome('aNNA')
     assert is_palindrome('aNNa')
     assert not is_palindrome('francesco')
+
+    message=''
+    has_raised_error = False
+    try:
+        is_palindrome('AnnA1')
+    except TypeError as e:
+        has_raised_error = True
+        message = str(e)
+    assert has_raised_error
+    assert message == "you did not insert a valid string format"
