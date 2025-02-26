@@ -24,5 +24,5 @@ def test_count_values():
     for el, val in res2.items():
         assert expected_res[el] == val , f"expected {el} to be repeated {val} times, got {expected_res[el]}"
 
-test_count_values()
+
    
