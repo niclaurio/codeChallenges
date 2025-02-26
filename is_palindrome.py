@@ -1,43 +1,27 @@
 from typing import Tuple
 
+def get_reversed_string(my_string: str) -> str:
+    return my_string[::-1]
 
 def is_palindrome(text: str) -> Tuple[bool, str]:
     """
     EX:
         is_palindrome('Francesco') returns False
-        is_palindrome('ANNNA') returns True
+        is_palindrome('ANNA') returns True
     """
 
     if not text.isalpha():
         raise TypeError("you did not insert a valid string format")
-    reversed_string = text[::-1]
-    return reversed_string == text, reversed_string
+    return get_reversed_string(text) == text
 
 
-def check_palindrome(text: str) -> None:
-    aux_, reversed_text = is_palindrome(text)
-    if aux_:
-        try:
-            assert reversed_text == text
-        except AssertionError:
-            raise InvalidPalindrome("there is something wrong with the palindrome algorithm")
+def test_get_reversed_string():
+    res =  get_reversed_string('pippo')
+    assert res == 'oppip', f"expected oppip , got {res}"
 
 
-class InvalidPalindrome(Exception):
-    pass
-
-
-if __name__ == '__main__':
-    while True:
-        text = input("Which string you want to check??")
-        # non ho usato argparse perchè argparse permetterebbe di settare il valore di text da riga di comando soltanto una volta (la seconda e la terza iterazione varrebbe sempre lo stesso valore)
-        aux_, reversed_string = is_palindrome(text)
-        if aux_:
-            check_palindrome(text)
-            print(f"Yes, the word {text} is a palindrome")
-        else:
-            print(f" Sorry, {text} is not a palindrome")
-        playing_again = input("if you want to press another word just type y otherwise type n")
-        if playing_again == 'n':
-            print("thank you, see you next time!!")
-            break
+def test_is_palindrome():
+    assert is_palindrome('ANNA')
+    assert not is_palindrome('aNNA')
+    assert is_palindrome('aNNa')
+    assert not is_palindrome('francesco')
