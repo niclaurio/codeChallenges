@@ -1,7 +1,7 @@
-from typing import Dict, Iterable
+from typing import Iterable
 
 
-def count_values(vals: Iterable) -> Dict[str, int]:
+def count_values(vals: Iterable) -> dict[str, int]:
     """
     it calculates how many times each element is repeted
     """
