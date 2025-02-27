@@ -1,3 +1,5 @@
 .idea/
 .makefileLogs/
 .venv/
+requirements_dev.txt
+requirements_test.txt
