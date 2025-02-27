@@ -65,7 +65,7 @@ def test_get_lower_multiple():
     ), f"expected you did not insert a number as error message got {message}"
 
     has_raised_error = False
-    message = ''
+    message = ""
     try:
         get_lower_multiple(-234567.25)
     except ValueError as e:
@@ -76,7 +76,7 @@ def test_get_lower_multiple():
     assert message == "please insert a positive number"
 
     has_raised_error = False
-    message = ''
+    message = ""
     try:
         get_lower_multiple(-234567)
     except ValueError as e:
@@ -85,5 +85,3 @@ def test_get_lower_multiple():
 
     assert has_raised_error
     assert message == "please insert a positive number"
-
-

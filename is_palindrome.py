@@ -1,7 +1,9 @@
 from typing import Tuple
 
+
 def get_reversed_string(my_string: str) -> str:
     return my_string[::-1]
+
 
 def is_palindrome(text: str) -> Tuple[bool, str]:
     """
@@ -16,20 +18,20 @@ def is_palindrome(text: str) -> Tuple[bool, str]:
 
 
 def test_get_reversed_string():
-    res =  get_reversed_string('pippo')
-    assert res == 'oppip', f"expected oppip , got {res}"
+    res = get_reversed_string("pippo")
+    assert res == "oppip", f"expected oppip , got {res}"
 
 
 def test_is_palindrome():
-    assert is_palindrome('ANNA')
-    assert not is_palindrome('aNNA')
-    assert is_palindrome('aNNa')
-    assert not is_palindrome('francesco')
+    assert is_palindrome("ANNA")
+    assert not is_palindrome("aNNA")
+    assert is_palindrome("aNNa")
+    assert not is_palindrome("francesco")
 
-    message=''
+    message = ""
     has_raised_error = False
     try:
-        is_palindrome('AnnA1')
+        is_palindrome("AnnA1")
     except TypeError as e:
         has_raised_error = True
         message = str(e)
