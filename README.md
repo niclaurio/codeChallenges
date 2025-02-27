@@ -1,4 +1,4 @@
-# COdeChallenges
+# CodeChallenges
 in this folder I wrote some simple exercises with their functional and unit tests
 
  - count_distinct_values.py: it counts how many times each iterable's value is repeated. I wanted to implement my own algorithm without using Counter class
