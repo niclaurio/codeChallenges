@@ -1,5 +1,8 @@
 .idea/
-.makefileLogs/*
+.makefileLogs/install_log.txt
+.makefileLogs/lint_log.txt
+.makefileLogs/reqs_log.txt
+.makefileLogs/test_log.txt
 .venv/
 requirements_dev.txt
 requirements_test.txt
