@@ -1,5 +1,9 @@
 .idea/
-.makefileLogs/
+.makefileLogs/*
 .venv/
 requirements_dev.txt
 requirements_test.txt
+__pycache__/
+tests/__pycache__/
+tests/functional/__pycache__/
+tests/unit/__pycache__/
