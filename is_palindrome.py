@@ -1,11 +1,8 @@
-from typing import Tuple
-
-
 def get_reversed_string(my_string: str) -> str:
     return my_string[::-1]
 
 
-def is_palindrome(text: str) -> Tuple[bool, str]:
+def is_palindrome(text: str) -> bool:
     """
     EX:
         is_palindrome('Francesco') returns False

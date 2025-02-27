@@ -1,7 +1,4 @@
-from typing import Iterable
-
-
-def count_values(vals: Iterable) -> dict[str, int]:
+def count_values(vals: list) -> dict[str, int]:
     """
     it calculates how many times each element is repeated
     """
