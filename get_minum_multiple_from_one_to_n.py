@@ -17,8 +17,20 @@ def get_maximum_power_lower_n(prime: int, n: int):
 
 def get_lower_multiple(n: int):
     """
-    Finds the smallest multiple of all numbers from 1 to n.
-    """
+        Finds the smallest multiple of all numbers from 1 to n.
+
+        The algorithm multiplies the highest power of each prime number less than or equal to n.
+
+        Args:
+            n (int): The upper limit up to which we want to find the smallest multiple.
+
+        Returns:
+            int: The smallest multiple that is divisible by all numbers from 1 to n.
+
+        Raises:
+            TypeError: If n is not an integer.
+            ValueError: If n is less than 1.
+        """
     if isinstance(n, float):
         n = int(n)
     elif not isinstance(n, int):
