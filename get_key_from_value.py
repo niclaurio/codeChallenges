@@ -12,6 +12,3 @@ def get_key_from_value(dictionary: dict, value: Any):
     dict_keys = list(dictionary.keys())
     value_index = dict_values.index(value)
     return dict_keys[value_index]
-
-
-

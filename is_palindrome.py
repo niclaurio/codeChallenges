@@ -12,4 +12,3 @@ def is_palindrome(text: str) -> bool:
     if not isinstance(text, str):
         raise TypeError("you did not insert a string")
     return get_reversed_string(text) == text
-

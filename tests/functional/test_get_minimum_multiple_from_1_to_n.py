@@ -1,6 +1,7 @@
 from get_minimum_multiple_from_one_to_n import get_lower_multiple
 import pytest
 
+
 def test_get_lower_multiple():
     res1 = get_lower_multiple(10)
     assert res1 == 2520, f"expected 2520 got {res1}"
@@ -27,4 +28,3 @@ def test_get_lower_multiple():
     with pytest.raises(ValueError) as exc_info:
         get_lower_multiple(-234567)
         assert str(exc_info) == "please insert a positive number"
-

@@ -4,4 +4,3 @@ def count_values(vals: list) -> dict[str, int]:
     """
     distinct_vals = set(vals)
     return {str(val): vals.count(val) for val in distinct_vals}
-
