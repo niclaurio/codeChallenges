@@ -11,25 +11,9 @@ def quicksort(arr: list) -> list:
     return quicksort(left) + middle + quicksort(right)
 
 
-def sorting_decorator(func):
-    def wrapper(vals, *args, reverse=False, **kwargs):
-        if not vals:
-            raise ValueError("Cannot sort an empty list or dictionary.")
-        if not has_only_one_datatype(vals):
-            raise TypeError("Cannot sort: elements must be of the same type.")
-        if isinstance(vals, list) and type(vals[0]) not in (float, str, int):
-            raise TypeError(
-                "Only lists or dictionaries with integers, floats, or strings can be sorted."
-            )
-
-        result = func(vals, *args, **kwargs)
-        return result[::-1] if reverse else result
-
-    return wrapper
-
-
-@sorting_decorator
-def sorting(vals: list | dict, by_key=True, reverse: bool = False) -> list | dict:
+def sorting(
+    values: list | dict, sort_by_key=True, reverse: bool = False
+) -> list | dict:
     """
     Sorts a list or dictionary (by keys or values) using the Quicksort algorithm.
 
@@ -50,26 +34,52 @@ def sorting(vals: list | dict, by_key=True, reverse: bool = False) -> list | dic
         TypeError: If elements in the list or dictionary keys/values have mixed types or unsupported types.
     """
 
-    def get_dictionary_by_values(values):
-        keys = list(vals.keys())
-        return {keys[i]: val for i, val in enumerate(values)}
+    def sort_dict_by_values(sorted_values):
+        value_list = list(values.values())
+        key_list = list(values.keys())
+        sorted_dict = {}
+        for val in sorted_values:
+            val_index = value_list.index(val)
+            key = key_list[val_index]
+            sorted_dict[key] = val
+        return sorted_dict
 
-    if isinstance(vals, dict):
-        values_to_sort = list(vals.keys()) if by_key else list(vals.values())
-        sorted_vals = quicksort(values_to_sort)
-        sorted_vals = sorted_vals if not reverse else sorted_vals[::-1]
-        return (
-            {el: vals[el] for el in sorted_vals}
-            if by_key
-            else get_dictionary_by_values(sorted_vals)
+    if not isinstance(values, (list, dict)):
+        raise TypeError(
+            "Invalid input type: only lists and dictionaries are supported."
         )
 
-    if isinstance(vals, list):
-        sorted_vals = quicksort(vals)
-        return sorted_vals if not reverse else sorted_vals[::-1]
+    if not values:
+        raise ValueError("Cannot sort an empty list or dictionary.")
 
-    raise TypeError("Invalid input type: only lists and dictionaries are supported.")
+    elements_to_sort = (
+        values
+        if isinstance(values, list)
+        else list(values.keys()) if sort_by_key else list(values.values())
+    )
+
+    if not has_only_one_datatype(elements_to_sort):
+        raise TypeError("Cannot sort: elements must be of the same type.")
+
+    if type(elements_to_sort[0]) not in (float, str, int):
+        raise TypeError(
+            "Only lists or dictionaries with integers, floats, or strings can be sorted."
+        )
+
+    sorted_elements = quicksort(elements_to_sort)
+    sorted_elements = sorted_elements if not reverse else sorted_elements[::-1]
+    if isinstance(values, dict):
+        return (
+            {key: values[key] for key in sorted_elements}
+            if sort_by_key
+            else sort_dict_by_values(sorted_elements)
+        )
+
+    return sorted_elements
 
 
 def has_only_one_datatype(vals: List) -> bool:
-    return len({type(el) for el in vals}) == 1
+    types = {type(el) for el in vals}
+    if int in types and float in types and len(types) == 2:
+        return True
+    return len(types) == 1
